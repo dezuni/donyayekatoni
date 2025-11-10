@@ -12,7 +12,7 @@
 </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سامانه خدمات دانشجویی دزیونی</title>
+    <title>سامانه خدمات دانشجويي دزيوني</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./style_jozvehyab.css">
@@ -29,10 +29,10 @@
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="logo">
-                    <img src="logo.png" alt="لوگوی دانشگاه" style="max-width: 40%; height: auto;">
+                    <img src="logo.png" alt="لوگوي دانشگاه" style="max-width: 40%; height: auto;">
                 </div>
                 <div class="header-text">                    
-                    <h2>سامانه خدمات دانشجویی</h2>
+                    <h2>سامانه خدمات دانشجويي</h2>
                 </div>
             </div>
         </div>
@@ -44,21 +44,21 @@
         <nav class="services-menu">
             <ul class="services-nav">
                 <li><a href="#" class="active" data-category="all"><i class="fas fa-list"></i>همه خدمات</a></li>
-                <li><a href="#" data-category="DISCOUNT"><i class="fas fa-tags"></i>تخفیف ها</a></li>
-                <li><a href="#" data-category="jozveh"><i class="fas fa-book"></i>جزوه یاب</a></li>
-               <!-- <li><a href="#" data-category="financial"><i class="fas fa-money-bill-wave"></i>مالی</a></li>  -->
-                <li><a href="#" data-category="welfare"><i class="fas fa-users"></i>خدمات غیرحضوری</a></li>                
-                <li><a href="#" data-category="map"><i class="fas fa-directions"></i>مکان یابی در دانشگاه</a></li>
+                <li><a href="#" data-category="DISCOUNT"><i class="fas fa-tags"></i>تخفيف ها</a></li>
+                <li><a href="#" data-category="jozveh"><i class="fas fa-book"></i>جزوه ياب</a></li>
+               <!-- <li><a href="#" data-category="financial"><i class="fas fa-money-bill-wave"></i>مالي</a></li>  -->
+                <li><a href="#" data-category="welfare"><i class="fas fa-users"></i>خدمات غيرحضوري</a></li>                
+                <li><a href="#" data-category="map"><i class="fas fa-directions"></i>مکان يابي در دانشگاه</a></li>
                 <li><a href="#" data-category="aboutus"><i class="fas fa-info-circle"></i> درباره ما</a></li>
-                <li><a href="#" data-category="contact"><i class="fas fa-headset"></i>تماس با ادمین</a></li>
+                <li><a href="#" data-category="contact"><i class="fas fa-headset"></i>تماس با ادمين</a></li>
             </ul>
         </nav>
 
         <main>
             <!-- Academic Service -->
             <div class="service-item hidden" data-category="jozveh">
-               <h2><i class="fas fa-book"></i> جزوه یاب</h2>
-              <p style="font-weight: bold; margin-top: 20px;">جستجوی جزوات بر اساس نام استاد </p>
+               <h2><i class="fas fa-book"></i> جزوه ياب</h2>
+              <p style="font-weight: bold; margin-top: 20px;">جستجوي جزوات بر اساس نام استاد </p>
               <input type="text" id="authorInput" placeholder="نام استاد را وارد کن *">
               <button onclick="searchAuthor()">جستجو</button>            
               <div id="response"></div>              
@@ -76,14 +76,14 @@
 
             <!-- Discount Service -->
             <div class="service-item hidden" data-category="DISCOUNT">
-                <h2><i class="fas fa-tags"></i> ثبت نام برای 10 % تخفیف فست فود لیمو</h2>
-                <p>فرم زیر را تکمیل کنید.</p>
+                <h2><i class="fas fa-tags"></i> ثبت نام براي 10 % تخفيف فست فود ليمو</h2>
+                <p>فرم زير را تکميل کنيد.</p>
             
                 <div class="formcontainer">
                     <form id="DiscountForm">
-                        <label>نام و نام خانوادگی: <input type="text" id="fullName_discount" required></label>
+                        <label>نام و نام خانوادگي: <input type="text" id="fullName_discount" required></label>
                        <label>شماره تماس (مانند مثال): <input type="text" id="phoneNumber_discount" inputmode="numeric" pattern="^09\d{9}$" placeholder="مثلاً: 09123456789" required> </label>
-                       <label>سه رقم آخر شماره دانشجویی/پرسنلی: <input type="text" id="DiscountVerifCode"  inputmode="numeric" placeholder="مثلاً: 123" pattern="\d{3}" maxlength="3" required></label>
+                       <label>سه رقم آخر شماره دانشجويي/پرسنلي: <input type="text" id="DiscountVerifCode"  inputmode="numeric" placeholder="مثلاً: 123" pattern="\d{3}" maxlength="3" required></label>
                         
                         <!-- FIXED CAPTCHA SECTION -->
                         <div id="captchaContainer_discount">
@@ -98,16 +98,16 @@
                                 text-align: center;
                                 color: #000;
                             "></div>
-                            <label for="captchaAnswer_discount">پاسخ را وارد کنید:</label>
+                            <label for="captchaAnswer_discount">پاسخ را وارد کنيد:</label>
                             <input type="number" id="captchaAnswer_discount" placeholder="" required>
                         </div>
                         
-                        <div id="captchaError_discount" style="color:red; display:none;">❌ پاسخ اشتباه است.</div>
-                        <button type="submit">تایید ثبت نام</button>
+                        <div id="captchaError_discount" style="color:red; display:none;">? پاسخ اشتباه است.</div>
+                        <button type="submit">تاييد ثبت نام</button>
                     </form>
                     <div id="DiscountRequestStatus"></div> 
                     <div id="DiscountSuccessMessage" style="display: none;">
-                        ✅ تخفیف شما با موفقیت ثبت شد!<br><br>
+                        ? تخفيف شما با موفقيت ثبت شد!<br><br>
                         <span style="color: blue;">
                             مهلت استفاده: 30 آبان 1404، ساعت 24:00. 
                         </span>
@@ -117,38 +117,38 @@
 
             <!-- Welfare Service -->
             <div class="service-item hidden" data-category="welfare">
-                <h2><i class="fas fa-users"></i> خدمات غیرحضوری</h2>
-                <p>دانشجویان و فارغ التحصیلان عزیز جهت استفاده از خدمات غیرحضوری سامانه دزیونی، فرم ذیل را تکمیل و ارسال نمایید.</p>
+                <h2><i class="fas fa-users"></i> خدمات غيرحضوري</h2>
+                <p>دانشجويان و فارغ التحصيلان عزيز جهت استفاده از خدمات غيرحضوري سامانه دزيوني، فرم ذيل را تکميل و ارسال نماييد.</p>
                     <div class="formcontainer">
                             <form id="serviceForm">
-                            <label>نام و نام خانوادگی: <input type="text" id="fullName" required></label>
+                            <label>نام و نام خانوادگي: <input type="text" id="fullName" required></label>
                             <label>شماره تماس: <input type="text" id="phoneNumber" placeholder="مثلاً: 09123456789" required></label>
                             <label>نوع خدمت:
                                 <select id="serviceType" required>
-                                    <option value="">انتخاب کنید</option>
-                                    <option value="آموزشی">خدمات آموزشی</option>
-                                    <option value="پژوهشی">خدمات پژوهشی</option>
-                                    <option value="دانشجویی">خدمات دانشجویی</option>
-                                    <option value="کاریابی">خدمات کاریابی</option>
+                                    <option value="">انتخاب کنيد</option>
+                                    <option value="آموزشي">خدمات آموزشي</option>
+                                    <option value="پژوهشي">خدمات پژوهشي</option>
+                                    <option value="دانشجويي">خدمات دانشجويي</option>
+                                    <option value="کاريابي">خدمات کاريابي</option>
                                 </select>
                             </label>
-                            <label>نوع فعالیت:
+                            <label>نوع فعاليت:
                                 <select id="subService" required>
-                                    <option value=""> نوع فعالیت را انتخاب کنید</option>
+                                    <option value=""> نوع فعاليت را انتخاب کنيد</option>
                                 </select>
                             </label>
-                            <label>توضیحات: <textarea id="description"></textarea></label>
+                            <label>توضيحات: <textarea id="description"></textarea></label>
                             <div id="captchaContainer">
-                            <label for="captchaAnswer" id="captchaQuestion">چند می‌شود؟</label>
-                            <input type="number" id="captchaAnswer" placeholder="پاسخ را وارد کنید" required>
+                            <label for="captchaAnswer" id="captchaQuestion">چند مي‌شود؟</label>
+                            <input type="number" id="captchaAnswer" placeholder="پاسخ را وارد کنيد" required>
                             </div>
-                            <div id="captchaError" style="color:red; display:none;">❌ پاسخ اشتباه است.</div>
+                            <div id="captchaError" style="color:red; display:none;">? پاسخ اشتباه است.</div>
                             <button type="submit">ارسال درخواست</button>
                         </form>
                         <div id="requeststatus"></div> 
-                         <div id="successMessage">  ✅ درخواست شما با موفقیت ثبت شد!<br><br>
+                         <div id="successMessage">  ? درخواست شما با موفقيت ثبت شد!<br><br>
                             <span style="color: blue;">
-                                 توجه: ادمین دزیونی جهت پیگیری درخواست ارسال شده، با شما تماس خواهد گرفت. 
+                                 توجه: ادمين دزيوني جهت پيگيري درخواست ارسال شده، با شما تماس خواهد گرفت. 
                             </span>
                         </div>
                         </div>
@@ -156,11 +156,11 @@
             
             <!-- office search -->
             <div class="service-item hidden" data-category="map">
-                <h2><i class="fas fa-directions"></i> مکان یابی در دانشگاه</h2>
-                <p style="font-weight: bold; margin-top: 20px;">جستجوی دفاتر دانشگاه</p>
+                <h2><i class="fas fa-directions"></i> مکان يابي در دانشگاه</h2>
+                <p style="font-weight: bold; margin-top: 20px;">جستجوي دفاتر دانشگاه</p>
                     
                 
-                        <input type="text" id="officeName" placeholder="نام دفتر را وارد کنید">
+                        <input type="text" id="officeName" placeholder="نام دفتر را وارد کنيد">
                         <button onclick="searchOffice()">جستجو</button>
                                   
                     <!-- Spinner and loading text -->
@@ -169,7 +169,7 @@
                         <div class="spinner"></div>                        
                     </div>                
                     <div id="officeSearchResult"></div>
-                    <p style="font-weight: bold; margin-top: 20px;">موقعیت ساختمان های دانشگاه</p>
+                    <p style="font-weight: bold; margin-top: 20px;">موقعيت ساختمان هاي دانشگاه</p>
                 <div class="map-container" id="interactive-map">
     <img
         src="https://raw.githubusercontent.com/dezuni/maindez/main/Map2.jpg"
@@ -182,18 +182,18 @@
             <!-- about us -->
             <div class="service-item" data-category="aboutus">
                 <h2><i class="fas fa-info-circle"></i> درباره ما</h2>
-                <p style="margin-top: 20px;">سامانه خدمات دانشجویی دزیونی در فروردین 1404 راه اندازی شد.</p>
-                <p style="margin-top: 10px;">از مهر ماه 1404، همکاری خدمات دانشجویی دزیونی با مرکز رشد دانشگاه آزاد اسلامی واحد دزفول شروع شد.</p>
-                <p style="color: blue; font-weight: bold; margin-top: 20px; margin-bottom: 0;">خدمات دزیونی شامل موارد زیر است:</p>
+                <p style="margin-top: 20px;">سامانه خدمات دانشجويي دزيوني در فروردين 1404 راه اندازي شد.</p>
+                <p style="margin-top: 10px;">از مهر ماه 1404، همکاري خدمات دانشجويي دزيوني با مرکز رشد دانشگاه آزاد اسلامي واحد دزفول شروع شد.</p>
+                <p style="color: blue; font-weight: bold; margin-top: 20px; margin-bottom: 0;">خدمات دزيوني شامل موارد زير است:</p>
                 <div style="display: flex; flex-wrap: wrap;  margin-top: 0;">
                <div style="white-space: pre-line; overflow-wrap: break-word; text-align: right;">
-    ◾تخفیف های دانشجویی
-    ◾جزوه یاب: یافتن جزوه دروس مختلف با جستجوی نام استاد. 
-    ◾مکان یابی در دانشگاه: یافتن آدرس دفاتر مختلف دانشگاه و رویت نقشه دانشگاه. 
-    ◾خدمات غیرحضوری: پیگیری درخواست کاربران جهت انجام امور دانشجویی/فارغ التحصیلی/آموزشی/پژوهشی/مالی توسط کارگزاران دزیونی در دانشگاه. 
-    ◾خدمات دیگر بزودی اضافه خواهد شد.                    
+    ?تخفيف هاي دانشجويي
+    ?جزوه ياب: يافتن جزوه دروس مختلف با جستجوي نام استاد. 
+    ?مکان يابي در دانشگاه: يافتن آدرس دفاتر مختلف دانشگاه و رويت نقشه دانشگاه. 
+    ?خدمات غيرحضوري: پيگيري درخواست کاربران جهت انجام امور دانشجويي/فارغ التحصيلي/آموزشي/پژوهشي/مالي توسط کارگزاران دزيوني در دانشگاه. 
+    ?خدمات ديگر بزودي اضافه خواهد شد.                    
         <p style="margin-top: 10px; color: green; font-weight: bold;">
-    برای استفاده از هر خدمت، آنرا در منوی بالای صفحه انتخاب کنید.
+    براي استفاده از هر خدمت، آنرا در منوي بالاي صفحه انتخاب کنيد.
     </p>
               </div>
               </div>
@@ -202,31 +202,31 @@
 
             <!-- Enhanced Contact Admin Section -->
             <div class="service-item hidden" data-category="contact">
-                <h2><i class="fas fa-headset"></i> تماس با ادمین</h2>
+                <h2><i class="fas fa-headset"></i> تماس با ادمين</h2>
                 <div class="contact-grid">
                     <div class="contact-method">
                         <i class="fab fa-telegram"></i>
-                        <h3>پشتیبانی تلگرام</h3>
+                        <h3>پشتيباني تلگرام</h3>
                         <p>@dezuni_admin</p>
                         <a href="https://t.me/dezuni_admin" target="_blank" class="btn">ارتباط در تلگرام</a>
                     </div>
                     <div class="contact-method">
                         <i class="fab fa-telegram"></i>
-                        <h3>کانال اطلاع رسانی دزیونی</h3>
+                        <h3>کانال اطلاع رساني دزيوني</h3>
                         <p>@dezuni_ch</p>
                         <a href="https://t.me/dezuni_ch" target="_blank" class="btn">ارتباط در تلگرام</a>
                     </div>
                     <div class="contact-method">
                         <i class="fas fa-envelope"></i>
-                        <h3>ایمیل پشتیبانی</h3>
+                        <h3>ايميل پشتيباني</h3>
                         <p>unidez.ir@gmail.com</p>
-                        <a href="mailto:support@university.ac.ir" class="btn">ارسال ایمیل</a>
+                        <a href="mailto:support@university.ac.ir" class="btn">ارسال ايميل</a>
                     </div>
                    <!-- <div class="contact-method">
                         <i class="fas fa-phone"></i>
                         <h3>تلفن تماس</h3>
-                        <p>۰۲۱-۱۲۳۴۵۶۷۸</p>
-                        <a href="tel:+982112345678" class="btn">تماس تلفنی</a> 
+                        <p>???-????????</p>
+                        <a href="tel:+982112345678" class="btn">تماس تلفني</a> 
                     </div> -->
                 </div>
             </div>
@@ -235,9 +235,9 @@
 
     <footer>
         <div class="container">
-            <p>© <span id="current-year"></span> کلیه حقوق این سامانه متعلق به دزیونی است.</p>
+            <p>© <span id="current-year"></span> کليه حقوق اين سامانه متعلق به دزيوني است.</p>
             <div class="telegram-contact">
-                <a href="https://t.me/dezuni_admin" target="_blank"><i class="fab fa-telegram"></i> پشتیبانی تلگرام: @dezuni_admin</a>
+                <a href="https://t.me/dezuni_admin" target="_blank"><i class="fab fa-telegram"></i> پشتيباني تلگرام: @dezuni_admin</a>
             </div>
         </div>
     </footer>
