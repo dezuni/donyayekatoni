@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <!-- Google tag (gtag.js) -->
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-E00MPED2X0"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -19,27 +19,33 @@
     <link rel="stylesheet" href="./style_request.css">
     <link rel="stylesheet" href="./style_discount.css">
     <style>
-        /* اطمینان از مخفی شدن بخش‌ها */
         .hidden { display: none !important; }
-        /* استایل عکس فست‌فود — هماهنگ با سایت */
-        .fastfood-banner {
-            text-align: center;
+        .discount-banners {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
             margin: 20px 0;
+        }
+        .discount-banner {
+            text-align: center;
             padding: 15px;
             background: #f9f9f9;
             border-radius: 10px;
             box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-        }
-        .fastfood-banner img {
             max-width: 200px;
+            flex: 1 1 200px;
+        }
+        .discount-banner img {
+            max-width: 100%;
             border-radius: 8px;
             cursor: pointer;
             transition: transform 0.2s;
         }
-        .fastfood-banner img:hover {
+        .discount-banner img:hover {
             transform: scale(1.03);
         }
-        .fastfood-banner p {
+        .discount-banner p {
             margin-top: 10px;
             font-size: 14px;
             color: #555;
@@ -79,10 +85,16 @@
         </nav>
 
         <main>
-            <!-- ✅ تصویر فست‌فود — بالاتر از جزوه‌یاب -->
-            <div class="fastfood-banner">
-                <img id="fastfoodBtn" src="fastfood.png" alt="فست فود لیمو">
-                <p>کلیک کنید تا کد تخفیف فست‌فود لیمو را دریافت کنید</p>
+            <!-- دو تصویر تخفیف -->
+            <div class="discount-banners">
+                <div class="discount-banner">
+                    <img id="fastfoodBtn" src="fastfood.png" alt="فست فود لیمو">
+                    <p>کلیک کنید برای تخفیف فست‌فود لیمو</p>
+                </div>
+                <div class="discount-banner">
+                    <img id="katoniBtn" src="katoni.png" alt="فروشگاه دنیای کتانی">
+                    <p>کلیک کنید برای تخفیف فروشگاه دنیای کتانی</p>
+                </div>
             </div>
 
             <!-- Academic Service -->
@@ -107,7 +119,9 @@
                 <p>فرم زیر را تکمیل کنید.</p>
                 <div class="formcontainer">
                     <form id="DiscountForm">
-                        <label>تخفیف انتخابی شما: <input type="text" id="selectedDiscountType" value="فستفود" readonly style="background: #f9f9f9;"></label>
+                        <label>تخفیف انتخابی شما:
+                            <input type="text" id="selectedDiscountType" disabled style="background: #f9f9f9;">
+                        </label>
                         <label>نام و نام خانوادگي: <input type="text" id="fullName_discount" required></label>
                         <label>شماره تماس (مانند مثال): <input type="text" id="phoneNumber_discount" inputmode="numeric" pattern="^09\d{9}$" placeholder="مثلاً: 09123456789" required></label>
                         <label>سه رقم آخر شماره دانشجويي/پرسنلي: <input type="text" id="DiscountVerifCode" inputmode="numeric" placeholder="مثلاً: 123" pattern="\d{3}" maxlength="3" required></label>
@@ -132,19 +146,11 @@
                         <button type="submit">تاييد ثبت نام</button>
                     </form>
                     <div id="DiscountRequestStatus"></div>
-                    <div id="DiscountSuccessMessage" style="display: none; margin-top: 20px; padding: 15px; background: #e6ffe6; border-radius: 8px;">
-                        ✅ تخفيف شما با موفقيت ثبت شد!<br><br>
-                        <span style="color: blue;">
-                            مهلت استفاده: 30 آبان 1404، ساعت 24:00.
-                        </span>
-                        <br><br>
-                        <strong>لطفاً مبلغ 40 هزار تومان را به شماره کارت زیر واریز کرده و رسید را برای شماره 0916325479 از طریق واتس‌اپ ارسال کنید:</strong><br>
-                        <span style="font-family: monospace; font-size: 18px; color: #d32f2f;">6064524898631145</span>
-                    </div>
+                    <div id="DiscountSuccessMessage" style="display: none; margin-top: 20px; padding: 15px; background: #e6ffe6; border-radius: 8px;"></div>
                 </div>
             </div>
 
-            <!-- بقیه سرویس‌ها بدون تغییر -->
+            <!-- Welfare Service -->
             <div class="service-item hidden" data-category="welfare">
                 <h2><i class="fas fa-users"></i> خدمات غيرحضوري</h2>
                 <p>دانشجويان و فارغ التحصيلان عزيز جهت استفاده از خدمات غيرحضوري سامانه دزيوني، فرم ذيل را تکميل و ارسال نماييد.</p>
@@ -184,6 +190,7 @@
                 </div>
             </div>
 
+            <!-- Map -->
             <div class="service-item hidden" data-category="map">
                 <h2><i class="fas fa-directions"></i> مکان يابي در دانشگاه</h2>
                 <p style="font-weight: bold; margin-top: 20px;">جستجوي دفاتر دانشگاه</p>
@@ -200,6 +207,7 @@
                 </div>
             </div>
 
+            <!-- About Us -->
             <div class="service-item" data-category="aboutus">
                 <h2><i class="fas fa-info-circle"></i> درباره ما</h2>
                 <p style="margin-top: 20px;">سامانه خدمات دانشجويي دزيوني در فروردين 1404 راه اندازي شد.</p>
@@ -219,6 +227,7 @@
                 </div>
             </div>
 
+            <!-- Contact -->
             <div class="service-item hidden" data-category="contact">
                 <h2><i class="fas fa-headset"></i> تماس با ادمين</h2>
                 <div class="contact-grid">
@@ -256,34 +265,52 @@
 
     <!-- اسکریپت اصلی -->
     <script>
-        // تنظیم سال فعلی در فوتر
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        // فعال‌سازی فرم با کلیک روی تصویر فست‌فود
-        document.getElementById('fastfoodBtn').addEventListener('click', function() {
+        function activateDiscountForm(type) {
             const formSection = document.getElementById('discountFormSection');
+            const discountInput = document.getElementById('selectedDiscountType');
+            const successMessage = document.getElementById('DiscountSuccessMessage');
+
+            if (type === 'fastfood') {
+                discountInput.value = 'فستفود';
+                successMessage.innerHTML = `
+                    ✅ تخفيف شما با موفقيت ثبت شد!<br><br>
+                    <span style="color: blue;">مهلت استفاده: 30 آبان 1404، ساعت 24:00.</span><br><br>
+                    <strong>لطفاً مبلغ 40 هزار تومان را به شماره کارت زیر واریز کرده و رسید را برای شماره 0916325479 از طریق واتس‌اپ ارسال کنید:</strong><br>
+                    <span style="font-family: monospace; font-size: 18px; color: #d32f2f;">6064524898631145</span>
+                `;
+            } else if (type === 'katoni') {
+                discountInput.value = 'فروشگاه 2';
+                successMessage.innerHTML = `
+                    ✅ تخفيف شما با موفقيت ثبت شد!<br><br>
+                    <span style="color: blue;">مهلت استفاده: 30 آبان 1404، ساعت 24:00.</span><br><br>
+                    <strong>لطفاً مبلغ 10 هزار تومان را به شماره کارت زیر واریز کرده و رسید را برای شماره 0916325479 از طریق واتس‌اپ ارسال کنید:</strong><br>
+                    <span style="font-family: monospace; font-size: 18px; color: #d32f2f;">6064524898631145</span>
+                `;
+            }
+
             formSection.classList.remove('hidden');
             formSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
             document.getElementById('fullName_discount').focus();
-        });
+        }
 
-        // مدیریت ارسال فرم تخفیف
+        document.getElementById('fastfoodBtn')?.addEventListener('click', () => activateDiscountForm('fastfood'));
+        document.getElementById('katoniBtn')?.addEventListener('click', () => activateDiscountForm('katoni'));
+
+        // Submit form
         document.getElementById('DiscountForm')?.addEventListener('submit', function(e) {
             e.preventDefault();
-
-            // در اینجا می‌توانید منطق واقعی کپچا و ارسال به سرور را پیاده‌سازی کنید
-            // برای نمایش ساده، همیشه موفق فرض می‌کنیم
             document.getElementById('DiscountForm').style.display = 'none';
             document.getElementById('DiscountSuccessMessage').style.display = 'block';
             document.getElementById('DiscountSuccessMessage').scrollIntoView({ behavior: 'smooth' });
         });
     </script>
 
-    <!-- اسکریپت‌های دیگر (در صورت نیاز) -->
+    <!-- سایر اسکریپت‌ها -->
     <script src="./script.js"></script>
     <script src="./script_jozvehyab.js"></script>
     <script src="./script_map.js"></script>
     <script src="./script_request.js"></script>
-    <!-- script_discount.js نیاز نیست چون منطقش داخل این فایل است -->
 </body>
 </html>
