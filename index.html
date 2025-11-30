@@ -1,316 +1,167 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E00MPED2X0"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-E00MPED2X0');
-    </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سامانه خدمات دانشجويي دزيوني</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./style_jozvehyab.css">
-    <link rel="stylesheet" href="./style_map.css">
-    <link rel="stylesheet" href="./style_request.css">
-    <link rel="stylesheet" href="./style_discount.css">
-    <style>
-        .hidden { display: none !important; }
-        .discount-banners {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin: 20px 0;
-        }
-        .discount-banner {
-            text-align: center;
-            padding: 15px;
-            background: #f9f9f9;
-            border-radius: 10px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-            max-width: 200px;
-            flex: 1 1 200px;
-        }
-        .discount-banner img {
-            max-width: 100%;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        .discount-banner img:hover {
-            transform: scale(1.03);
-        }
-        .discount-banner p {
-            margin-top: 10px;
-            font-size: 14px;
-            color: #555;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>بررسی کد تخفیف</title>
+
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #3498db;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo {
+      padding: 16px 0;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .logo img {
+      max-width: 40%;
+      height: auto;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      width: 90%;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #45a049;
+    }
+
+    #result {
+      margin-top: 20px;
+      padding: 10px;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    .success { background: #d4edda; color: #155724; }
+    .error { background: #f8d7da; color: #721c24; }
+    .loading { background: #e3f2fd; color: #1976d2; }
+
+    .images-row {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 30px;
+      padding: 0 20px;
+      flex-wrap: wrap;
+    }
+
+    .images-row img {
+      width: 140px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .images-row img:hover {
+      transform: scale(1.04);
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container-header">
-            <div class="header-content">
-                <button class="mobile-menu-toggle">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="logo">
-                    <img src="logo.png" alt="لوگوي دانشگاه" style="max-width: 40%; height: auto;">
-                </div>
-                <div class="header-text">
-                    <h2>سامانه خدمات دانشجويي</h2>
-                </div>
-            </div>
-        </div>
-    </header>
+  <div class="logo">
+    <img src="logo.png" alt="لوگوی دانشگاه">
+  </div>
 
-    <div class="mobile-menu-overlay"></div>
+  <div class="container">
+    <h2>بررسی کد تخفیف</h2>
+    <input type="text" id="discountCode" placeholder="کد تخفیف را وارد کنید (مثلاً ABC123)" />
+    <button onclick="checkDiscount()">بررسی کد تخفیف</button>
+    <div id="result"></div>
+  </div>
 
-    <div class="container-main">
-        <nav class="services-menu">
-            <ul class="services-nav">
-                <li><a href="#" class="active" data-category="all"><i class="fas fa-list"></i>همه خدمات</a></li>
-                <li><a href="#" data-category="DISCOUNT"><i class="fas fa-tags"></i>تخفيف ها</a></li>
-                <li><a href="#" data-category="jozveh"><i class="fas fa-book"></i>جزوه ياب</a></li>
-                <li><a href="#" data-category="welfare"><i class="fas fa-users"></i>خدمات غيرحضوري</a></li>
-                <li><a href="#" data-category="map"><i class="fas fa-directions"></i>مکان يابي در دانشگاه</a></li>
-                <li><a href="#" data-category="aboutus"><i class="fas fa-info-circle"></i> درباره ما</a></li>
-                <li><a href="#" data-category="contact"><i class="fas fa-headset"></i>تماس با ادمين</a></li>
-            </ul>
-        </nav>
+  <div class="images-row">
+    <img src="1.png" alt="تصویر 1">
+  </div>
 
-        <main>
-            <!-- دو تصویر تخفیف -->
-            <div class="discount-banners">
-                <div class="discount-banner">
-                    <img id="fastfoodBtn" src="fastfood.png" alt="فست فود لیمو">
-                    <p>کلیک کنید برای تخفیف فست‌فود لیمو</p>
-                </div>
-                <div class="discount-banner">
-                    <img id="katoniBtn" src="katoni.png" alt="فروشگاه دنیای کتانی">
-                    <p>کلیک کنید برای تخفیف فروشگاه دنیای کتانی</p>
-                </div>
-            </div>
+  <script>
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwDQJXt-XenEh6EupyXhNPi4fgHx0NXNID-mF5tbm9YLckScd0MdcDCWBhEYu9lkdd5/exec";
+    const CURRENT_STORE = "دنیای کتانی"
 
-            <!-- Academic Service -->
-            <div class="service-item hidden" data-category="jozveh">
-                <h2><i class="fas fa-book"></i> جزوه ياب</h2>
-                <p style="font-weight: bold; margin-top: 20px;">جستجوي جزوات بر اساس نام استاد </p>
-                <input type="text" id="authorInput" placeholder="نام استاد را وارد کن *">
-                <button onclick="searchAuthor()">جستجو</button>
-                <div id="response"></div>
-                <div id="searchResults" style="display: none;">
-                    <div id="authorButtons"></div>
-                </div>
-                <div id="articleResults" style="display: none;">
-                    <ul id="articleList"></ul>
-                    <div id="articleListِDisclaimer"> </div>
-                </div>
-            </div>
+    async function checkDiscount() {
+      const input = document.getElementById("discountCode");
+      const resultDiv = document.getElementById("result");
+      const code = input.value.trim();
 
-            <!-- Discount Service -->
-            <div id="discountFormSection" class="service-item hidden" data-category="DISCOUNT">
-                <h2><i class="fas fa-tags"></i> دریافت کد تخفیف</h2>
-                <p>فرم زیر را تکمیل کنید.</p>
-                <div class="formcontainer">
-                    <form id="DiscountForm">
-                        <label>تخفیف انتخابی شما:
-                            <input type="text" id="selectedDiscountType" disabled style="background: #f9f9f9;">
-                        </label>
-                        <label>نام و نام خانوادگي: <input type="text" id="fullName_discount" required></label>
-                        <label>شماره تماس (مانند مثال): <input type="text" id="phoneNumber_discount" inputmode="numeric" pattern="^09\d{9}$" placeholder="مثلاً: 09123456789" required></label>
-                        <label>سه رقم آخر شماره دانشجويي/پرسنلي: <input type="text" id="DiscountVerifCode" inputmode="numeric" placeholder="مثلاً: 123" pattern="\d{3}" maxlength="3" required></label>
+      resultDiv.textContent = "";
+      resultDiv.className = "";
 
-                        <div id="captchaContainer_discount">
-                            <div id="captchaQuestion_discount" style="
-                                padding: 10px;
-                                margin: 10px 0;
-                                background: #f0f0f0;
-                                border: 1px solid #ccc;
-                                border-radius: 5px;
-                                font-size: 16px;
-                                font-weight: bold;
-                                text-align: center;
-                                color: #000;
-                            "></div>
-                            <label for="captchaAnswer_discount">پاسخ را وارد کنيد:</label>
-                            <input type="number" id="captchaAnswer_discount" required>
-                        </div>
+      if (!code) {
+        showResult("لطفاً کد تخفیف را وارد کنید.", "error");
+        return;
+      }
 
-                        <div id="captchaError_discount" style="color:red; display:none;">❌ پاسخ اشتباه است.</div>
-                        <button type="submit">تاييد ثبت نام</button>
-                    </form>
-                    <div id="DiscountRequestStatus"></div>
-                    <div id="DiscountSuccessMessage" style="display: none; margin-top: 20px; padding: 15px; background: #e6ffe6; border-radius: 8px;"></div>
-                </div>
-            </div>
+      showResult("در حال بررسی کد تخفیف...", "loading");
 
-            <!-- Welfare Service -->
-            <div class="service-item hidden" data-category="welfare">
-                <h2><i class="fas fa-users"></i> خدمات غيرحضوري</h2>
-                <p>دانشجويان و فارغ التحصيلان عزيز جهت استفاده از خدمات غيرحضوري سامانه دزيوني، فرم ذيل را تکميل و ارسال نماييد.</p>
-                <div class="formcontainer">
-                    <form id="serviceForm">
-                        <label>نام و نام خانوادگي: <input type="text" id="fullName" required></label>
-                        <label>شماره تماس: <input type="text" id="phoneNumber" placeholder="مثلاً: 09123456789" required></label>
-                        <label>نوع خدمت:
-                            <select id="serviceType" required>
-                                <option value="">انتخاب کنيد</option>
-                                <option value="آموزشي">خدمات آموزشي</option>
-                                <option value="پژوهشي">خدمات پژوهشي</option>
-                                <option value="دانشجويي">خدمات دانشجويي</option>
-                                <option value="کاريابي">خدمات کاريابي</option>
-                            </select>
-                        </label>
-                        <label>نوع فعاليت:
-                            <select id="subService" required>
-                                <option value=""> نوع فعاليت را انتخاب کنيد</option>
-                            </select>
-                        </label>
-                        <label>توضيحات: <textarea id="description"></textarea></label>
-                        <div id="captchaContainer">
-                            <label for="captchaAnswer" id="captchaQuestion">چند مي‌شود؟</label>
-                            <input type="number" id="captchaAnswer" placeholder="پاسخ را وارد کنيد" required>
-                        </div>
-                        <div id="captchaError" style="color:red; display:none;">❌ پاسخ اشتباه است.</div>
-                        <button type="submit">ارسال درخواست</button>
-                    </form>
-                    <div id="requeststatus"></div>
-                    <div id="successMessage" style="display: none;">
-                        ✅ درخواست شما با موفقيت ثبت شد!<br><br>
-                        <span style="color: blue;">
-                            توجه: ادمين دزيوني جهت پيگيري درخواست ارسال شده، با شما تماس خواهد گرفت.
-                        </span>
-                    </div>
-                </div>
-            </div>
+      try {
+        const url = `${WEB_APP_URL}?code=${encodeURIComponent(code)}&store=${encodeURIComponent(CURRENT_STORE)}`;
+        const response = await fetch(url);
+        const data = await response.json();
 
-            <!-- Map -->
-            <div class="service-item hidden" data-category="map">
-                <h2><i class="fas fa-directions"></i> مکان يابي در دانشگاه</h2>
-                <p style="font-weight: bold; margin-top: 20px;">جستجوي دفاتر دانشگاه</p>
-                <input type="text" id="officeName" placeholder="نام دفتر را وارد کنيد">
-                <button onclick="searchOffice()">جستجو</button>
-                <div class="spinner-container" id="spinnerContainer">
-                    <span>در حال جستجو...</span>
-                    <div class="spinner"></div>
-                </div>
-                <div id="officeSearchResult"></div>
-                <p style="font-weight: bold; margin-top: 20px;">موقعيت ساختمان هاي دانشگاه</p>
-                <div class="map-container" id="interactive-map">
-                    <img src="https://raw.githubusercontent.com/dezuni/maindez/main/Map2.jpg" alt="نقشه" style="max-width: 100%; height: auto;">
-                </div>
-            </div>
+        if (data.success) {
+          const creditStr = (typeof data.credit === 'number') ? data.credit.toLocaleString() : data.credit;
+          const inShopPayStr = (typeof data.inShopPay === 'number') ? data.inShopPay.toLocaleString() : data.inShopPay;
 
-            <!-- About Us -->
-            <div class="service-item" data-category="aboutus">
-                <h2><i class="fas fa-info-circle"></i> درباره ما</h2>
-                <p style="margin-top: 20px;">سامانه خدمات دانشجويي دزيوني در فروردين 1404 راه اندازي شد.</p>
-                <p style="margin-top: 10px;">از مهر ماه 1404، همکاري خدمات دانشجويي دزيوني با مرکز رشد دانشگاه آزاد اسلامي واحد دزفول شروع شد.</p>
-                <p style="color: blue; font-weight: bold; margin-top: 20px; margin-bottom: 0;">خدمات دزيوني شامل موارد زير است:</p>
-                <div style="display: flex; flex-wrap: wrap; margin-top: 0;">
-                    <div style="white-space: pre-line; overflow-wrap: break-word; text-align: right;">
-                        ❌ تخفيف هاي دانشجويي
-                        ❌ جزوه ياب: يافتن جزوه دروس مختلف با جستجوي نام استاد.
-                        ❌ مکان يابي در دانشگاه: يافتن آدرس دفاتر مختلف دانشگاه و رويت نقشه دانشگاه.
-                        ❌ خدمات غيرحضوري: پيگيري درخواست کاربران جهت انجام امور دانشجويي/فارغ التحصيلي/آموزشي/پژوهشي/مالي توسط کارگزاران دزيوني در دانشگاه.
-                        ❌ خدمات ديگر بزودي اضافه خواهد شد.
-                        <p style="margin-top: 10px; color: green; font-weight: bold;">
-                            براي استفاده از هر خدمت، آنرا در منوي بالاي صفحه انتخاب کنيد.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Contact -->
-            <div class="service-item hidden" data-category="contact">
-                <h2><i class="fas fa-headset"></i> تماس با ادمين</h2>
-                <div class="contact-grid">
-                    <div class="contact-method">
-                        <i class="fab fa-telegram"></i>
-                        <h3>پشتيباني تلگرام</h3>
-                        <p>@dezuni_admin</p>
-                        <a href="https://t.me/dezuni_admin" target="_blank" class="btn">ارتباط در تلگرام</a>
-                    </div>
-                    <div class="contact-method">
-                        <i class="fab fa-telegram"></i>
-                        <h3>کانال اطلاع رساني دزيوني</h3>
-                        <p>@dezuni_ch</p>
-                        <a href="https://t.me/dezuni_ch" target="_blank" class="btn">ارتباط در تلگرام</a>
-                    </div>
-                    <div class="contact-method">
-                        <i class="fas fa-envelope"></i>
-                        <h3>ايميل پشتيباني</h3>
-                        <p>unidez.ir@gmail.com</p>
-                        <a href="mailto:unidez.ir@gmail.com" class="btn">ارسال ايميل</a>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
-
-    <footer>
-        <div class="container">
-            <p>© <span id="current-year"></span> کليه حقوق اين سامانه متعلق به دزيوني است.</p>
-            <div class="telegram-contact">
-                <a href="https://t.me/dezuni_admin" target="_blank"><i class="fab fa-telegram"></i> پشتيباني تلگرام: @dezuni_admin</a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- اسکریپت اصلی -->
-    <script>
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-
-        function activateDiscountForm(type) {
-            const formSection = document.getElementById('discountFormSection');
-            const discountInput = document.getElementById('selectedDiscountType');
-            const successMessage = document.getElementById('DiscountSuccessMessage');
-
-            if (type === 'fastfood') {
-                discountInput.value = 'فستفود';
-                successMessage.innerHTML = `
-                    ✅ تخفيف شما با موفقيت ثبت شد!<br><br>
-                    <span style="color: blue;">مهلت استفاده: 30 آبان 1404، ساعت 24:00.</span><br><br>
-                    <strong>لطفاً مبلغ 40 هزار تومان را به شماره کارت زیر واریز کرده و رسید را برای شماره 0916325479 از طریق واتس‌اپ ارسال کنید:</strong><br>
-                    <span style="font-family: monospace; font-size: 18px; color: #d32f2f;">6064524898631145</span>
-                `;
-            } else if (type === 'katoni') {
-                discountInput.value = 'فروشگاه 2';
-                successMessage.innerHTML = `
-                    ✅ تخفيف شما با موفقيت ثبت شد!<br><br>
-                    <span style="color: blue;">مهلت استفاده: 30 آبان 1404، ساعت 24:00.</span><br><br>
-                    <strong>لطفاً مبلغ 10 هزار تومان را به شماره کارت زیر واریز کرده و رسید را برای شماره 0916325479 از طریق واتس‌اپ ارسال کنید:</strong><br>
-                    <span style="font-family: monospace; font-size: 18px; color: #d32f2f;">6064524898631145</span>
-                `;
-            }
-
-            formSection.classList.remove('hidden');
-            formSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            document.getElementById('fullName_discount').focus();
+          const message = `
+کد تخفیف <strong>${code}</strong> معتبر است.<br>
+نام و نام خانوادگی: <strong>${data.name}</strong><br>
+اعتبار کارت تخفیف: <strong>${creditStr} تومان</strong><br>
+پرداخت در فروشگاه: <strong>${inShopPayStr} تومان</strong>
+`;
+          showResult(message, "success");
+        } else {
+          showResult(data.message || "خطای نامشخص.", "error");
         }
+      } catch (error) {
+        console.error("خطا:", error);
+        showResult("خطا در اتصال به سرور. لطفاً دوباره تلاش کنید.", "error");
+      }
 
-        document.getElementById('fastfoodBtn')?.addEventListener('click', () => activateDiscountForm('fastfood'));
-        document.getElementById('katoniBtn')?.addEventListener('click', () => activateDiscountForm('katoni'));
+      input.value = "";
+    }
 
-        // Submit form
-        document.getElementById('DiscountForm')?.addEventListener('submit', function(e) {
-            e.preventDefault();
-            document.getElementById('DiscountForm').style.display = 'none';
-            document.getElementById('DiscountSuccessMessage').style.display = 'block';
-            document.getElementById('DiscountSuccessMessage').scrollIntoView({ behavior: 'smooth' });
-        });
-    </script>
-
-    <!-- سایر اسکریپت‌ها -->
-    <script src="./script.js"></script>
-    <script src="./script_jozvehyab.js"></script>
-    <script src="./script_map.js"></script>
-    <script src="./script_request.js"></script>
+    function showResult(message, type) {
+      const div = document.getElementById("result");
+      div.innerHTML = message;
+      div.className = type;
+    }
+  </script>
 </body>
 </html>
